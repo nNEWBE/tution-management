@@ -216,6 +216,45 @@ document.addEventListener("DOMContentLoaded", () => {
       UI.closeModal(e.target.id);
     }
   });
+
+  // ── Mobile Navigation Drawer ────────────────────────────────
+  const drawer   = document.getElementById("mobile-nav-drawer");
+  const overlay  = document.getElementById("mobile-nav-overlay");
+  const closeBtn = document.getElementById("mobile-nav-close");
+  const toggleBtn = document.querySelector(".mobile-nav-toggle");
+
+  function openDrawer() {
+    if (!drawer) return;
+    drawer.classList.add("open");
+    drawer.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeDrawer() {
+    if (!drawer) return;
+    drawer.classList.remove("open");
+    drawer.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  if (toggleBtn) toggleBtn.addEventListener("click", openDrawer);
+  if (overlay)  overlay.addEventListener("click", closeDrawer);
+  if (closeBtn) closeBtn.addEventListener("click", closeDrawer);
+
+  // Auto-close on any anchor link click inside drawer
+  if (drawer) {
+    drawer.querySelectorAll("a[href]").forEach(link => {
+      link.addEventListener("click", () => {
+        // Slight delay so scroll-to-section works before closing
+        setTimeout(closeDrawer, 80);
+      });
+    });
+  }
+
+  // Close drawer on Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeDrawer();
+  });
 });
 
 window.UI = UI;

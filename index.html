@@ -53,6 +53,70 @@
     </div>
   </header>
 
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer" aria-hidden="true">
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <div class="mobile-nav-panel" role="dialog" aria-label="Navigation Menu">
+      <!-- Drawer Header -->
+      <div class="mobile-nav-header">
+        <a href="index.html" class="nav-brand" style="color:#1e293b; text-decoration:none;">
+          <div class="nav-brand-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 01-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+            </svg>
+          </div>
+          <span>IJTutors</span>
+        </a>
+        <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close Menu">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Drawer Nav Links -->
+      <nav class="mobile-nav-links">
+        <a href="index.html" class="mobile-nav-link active">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Home
+        </a>
+        <a href="about.html" class="mobile-nav-link">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          About System
+        </a>
+        <a href="#features" class="mobile-nav-link" id="mnav-features">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          Features
+        </a>
+        <a href="#facilities" class="mobile-nav-link" id="mnav-facilities">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          Campus
+        </a>
+        <a href="#mentors" class="mobile-nav-link" id="mnav-mentors">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 01-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+          Faculty
+        </a>
+        <a href="contact.html" class="mobile-nav-link">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Contact
+        </a>
+      </nav>
+
+      <!-- Drawer Footer Actions -->
+      <div class="mobile-nav-footer">
+        <a href="login.html" class="btn btn-outline" style="width:100%; justify-content:center;">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/></svg>
+          Portal Login
+        </a>
+        <a href="register.html" class="btn btn-primary" style="width:100%; justify-content:center;">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>
+          Enroll Student
+        </a>
+      </div>
+    </div>
+  </div>
+
   <!-- Compact High-Contrast Hero Section -->
   <section class="hero-section position-relative overflow-hidden"
     style="padding: 110px 0 50px; background: var(--gradient-hero); color: #ffffff;">
@@ -1136,20 +1200,36 @@
   <script src="js/animations.js"></script>
   <script src="js/app.js"></script>
   <script>
-    // Header Scroll Effect
+    // Header Scroll Effect + Scroll-to-Top visibility
+    const navbar    = document.getElementById('main-navbar');
+    const loginBtn  = document.getElementById('nav-login-btn');
+    const scrollBtn = document.getElementById('scroll-to-top-btn');
+
     window.addEventListener('scroll', function () {
-      const navbar = document.getElementById('main-navbar');
-      const loginBtn = document.getElementById('nav-login-btn');
       if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
-        loginBtn.classList.remove('btn-outline-white');
-        loginBtn.classList.add('btn-outline');
+        if (loginBtn) { loginBtn.classList.remove('btn-outline-white'); loginBtn.classList.add('btn-outline'); }
       } else {
         navbar.classList.remove('scrolled');
-        loginBtn.classList.add('btn-outline-white');
-        loginBtn.classList.remove('btn-outline');
+        if (loginBtn) { loginBtn.classList.add('btn-outline-white'); loginBtn.classList.remove('btn-outline'); }
+      }
+
+      // Show / hide scroll-to-top button
+      if (scrollBtn) {
+        if (window.scrollY > 400) {
+          scrollBtn.classList.add('visible');
+        } else {
+          scrollBtn.classList.remove('visible');
+        }
       }
     });
+
+    // Scroll to top on click
+    if (scrollBtn) {
+      scrollBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
   </script>
 </body>
 
