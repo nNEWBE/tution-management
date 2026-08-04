@@ -115,11 +115,14 @@
 
 /* ── Footer ───────────────────────────────────────────────── */
 .footer {
-  background: var(--color-primary-dark);
+  width: 100%;
+  background: linear-gradient(180deg, #0f172a 0%, #080c14 100%);
   color: rgba(255,255,255,0.85);
-  padding: var(--space-16) 0 var(--space-6);
+  padding: 4.5rem 0 2rem;
   position: relative;
   overflow: hidden;
+  border-top: 1px solid rgba(56, 189, 248, 0.25);
+  box-shadow: 0 -10px 40px rgba(15, 23, 42, 0.3);
 }
 
 .footer::before {
@@ -127,7 +130,7 @@
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(99,102,241,0.5) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.6) 50%, transparent 100%);
 }
 
 /* Decorative glow in footer */
@@ -136,7 +139,7 @@
   position: absolute;
   top: -120px; right: -120px;
   width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(99,102,241,0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -156,27 +159,27 @@
   gap: var(--space-3);
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   color: #ffffff;
   margin-bottom: var(--space-4);
   letter-spacing: -0.02em;
 }
 
-.footer-brand-logo .nav-brand-icon { box-shadow: 0 4px 16px rgba(67,56,202,0.4); }
+.footer-brand-logo .nav-brand-icon { box-shadow: 0 4px 16px rgba(56, 189, 248, 0.4); }
 
 .footer-brand-desc {
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.65);
   font-size: var(--fs-sm);
   line-height: 1.7;
-  max-width: 300px;
+  max-width: 320px;
 }
 
 .footer-column-title {
-  font-size: var(--fs-xs);
-  font-weight: 700;
+  font-size: 0.75rem;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--color-accent);
+  color: #38bdf8;
   margin-bottom: var(--space-5);
 }
 
@@ -187,15 +190,19 @@
 }
 
 .footer-link {
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.65);
   font-size: var(--fs-sm);
   display: flex;
   align-items: center;
   gap: var(--space-2);
   transition: all var(--transition-fast);
+  text-decoration: none;
 }
 
-.footer-link:hover { color: rgba(255,255,255,0.95); transform: translateX(3px); }
+.footer-link:hover {
+  color: #38bdf8;
+  transform: translateX(4px);
+}
 
 .footer-bottom {
   padding-top: var(--space-6);
@@ -204,7 +211,7 @@
   align-items: center;
   justify-content: space-between;
   font-size: var(--fs-xs);
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.5);
   position: relative;
   z-index: 1;
 }
