@@ -173,7 +173,9 @@
     <div class="modal">
       <div class="modal-header">
         <span class="fw-bold">Create Homework Assignment</span>
-        <button class="btn-icon" onclick="UI.closeModal('modal-add-homework')">&times;</button>
+        <button class="btn-icon" onclick="UI.closeModal('modal-add-homework')" aria-label="Close">
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
       </div>
       <form id="create-homework-form">
         <div class="modal-body">
@@ -215,7 +217,9 @@
     <div class="modal">
       <div class="modal-header">
         <span class="fw-bold">Record Evaluation Score</span>
-        <button class="btn-icon" onclick="UI.closeModal('modal-enter-grade')">&times;</button>
+        <button class="btn-icon" onclick="UI.closeModal('modal-enter-grade')" aria-label="Close">
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
       </div>
       <form id="student-grade-form">
         <input type="hidden" id="grade-student-id">

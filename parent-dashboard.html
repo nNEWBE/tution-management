@@ -193,7 +193,9 @@
     <div class="modal">
       <div class="modal-header">
         <span class="fw-bold">Pay Tuition Fee Online</span>
-        <button class="btn-icon" onclick="UI.closeModal('modal-pay-fee')">&times;</button>
+        <button class="btn-icon" onclick="UI.closeModal('modal-pay-fee')" aria-label="Close">
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
       </div>
       <form id="checkout-payment-form">
         <input type="hidden" id="pay-modal-id">
@@ -236,7 +238,9 @@
     <div class="modal">
       <div class="modal-header no-print">
         <span class="fw-bold">Payment Money Receipt</span>
-        <button class="btn-icon" onclick="UI.closeModal('modal-view-receipt')">&times;</button>
+        <button class="btn-icon" onclick="UI.closeModal('modal-view-receipt')" aria-label="Close">
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
       </div>
       <div class="modal-body" id="receipt-modal-content"></div>
       <div class="modal-footer no-print">

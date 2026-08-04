@@ -206,8 +206,15 @@ class UI {
 
 document.addEventListener("DOMContentLoaded", () => {
   UI.initCustomSelects();
-  document.addEventListener("click", () => {
+
+  // Close open dropdowns when clicking outside
+  document.addEventListener("click", (e) => {
     document.querySelectorAll(".custom-select-wrapper.open").forEach(w => w.classList.remove("open"));
+
+    // Close modal when clicking directly on the backdrop
+    if (e.target.classList.contains("modal-backdrop") && e.target.classList.contains("active")) {
+      UI.closeModal(e.target.id);
+    }
   });
 });
 
