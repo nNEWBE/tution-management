@@ -1058,7 +1058,7 @@
   font-weight: 700;
   font-size: var(--fs-sm);
   flex-shrink: 0;
-  border: 2px solid var(--color-surface);
+  border: none;
   font-family: var(--font-heading);
 }
 
