@@ -16,16 +16,18 @@ html {
   text-rendering: optimizeLegibility;
   background-color: #080c14;
   overflow-x: hidden;
+  overscroll-behavior-y: none;
 }
 
 body {
   font-family: var(--font-body);
   font-size: var(--fs-base);
   color: var(--color-text);
-  background-color: var(--color-background);
+  background-color: #080c14;
   line-height: 1.65;
   min-height: 100vh;
   overflow-x: hidden;
+  overscroll-behavior-y: none;
   display: flex;
   flex-direction: column;
 }

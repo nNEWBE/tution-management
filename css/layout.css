@@ -273,15 +273,15 @@
   box-shadow: 0 -10px 40px rgba(15, 23, 42, 0.3);
 }
 
-/* Infinite dark extension below footer to eliminate any bottom white gap */
+/* Infinite dark extension below footer — eliminates white gap on overscroll */
 .footer::after {
   content: '';
-  position: absolute;
-  left: -50vw;
-  right: -50vw;
-  bottom: -2000px;
-  height: 2000px;
-  background: #080c14 !important;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: -100vh;
+  height: 100vh;
+  background: #080c14;
   pointer-events: none;
   z-index: -1;
 }
@@ -294,6 +294,7 @@
   margin: 0 auto !important;
 }
 
+/* Top glowing border line + decorative glow combined in ::before */
 .footer::before {
   content: '';
   position: absolute;
@@ -302,15 +303,16 @@
   background: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.6) 50%, transparent 100%);
 }
 
-/* Decorative glow in footer */
-.footer::after {
+/* Decorative radial glow (separate element inside footer-grid) */
+.footer-grid::after {
   content: '';
   position: absolute;
   top: -120px; right: -120px;
   width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
+  z-index: 0;
 }
 
 .footer-grid {
