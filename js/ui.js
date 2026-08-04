@@ -58,6 +58,7 @@ class UI {
     if (!modal) return;
     modal.classList.add("active");
     document.body.style.overflow = "hidden";
+    UI.initCustomSelects();
   }
 
   static closeModal(modalId) {
@@ -113,6 +114,82 @@ class UI {
       });
     }
   }
+
+  static initCustomSelects() {
+    document.querySelectorAll("select.form-select:not(.custom-select-enhanced)").forEach(select => {
+      select.classList.add("custom-select-enhanced");
+      select.style.display = "none";
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "custom-select-wrapper";
+
+      const trigger = document.createElement("div");
+      trigger.className = "custom-select-trigger";
+      
+      const selectedOption = select.options[select.selectedIndex] || select.options[0];
+      const labelSpan = document.createElement("span");
+      labelSpan.textContent = selectedOption ? selectedOption.text : "";
+      
+      const arrow = document.createElement("span");
+      arrow.className = "arrow-icon";
+      arrow.innerHTML = `<svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>`;
+
+      trigger.appendChild(labelSpan);
+      trigger.appendChild(arrow);
+
+      const dropdown = document.createElement("div");
+      dropdown.className = "custom-select-dropdown";
+
+      const updateDropdownOptions = () => {
+        dropdown.innerHTML = "";
+        Array.from(select.options).forEach((opt, idx) => {
+          const optionEl = document.createElement("div");
+          optionEl.className = `custom-select-option ${opt.selected ? "selected" : ""}`;
+          optionEl.innerHTML = `
+            <span>${opt.text}</span>
+            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+          `;
+          optionEl.addEventListener("click", (e) => {
+            e.stopPropagation();
+            select.selectedIndex = idx;
+            select.dispatchEvent(new Event("change", { bubbles: true }));
+            labelSpan.textContent = opt.text;
+            wrapper.classList.remove("open");
+            updateDropdownOptions();
+          });
+          dropdown.appendChild(optionEl);
+        });
+      };
+
+      updateDropdownOptions();
+
+      trigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        document.querySelectorAll(".custom-select-wrapper.open").forEach(w => {
+          if (w !== wrapper) w.classList.remove("open");
+        });
+        wrapper.classList.toggle("open");
+      });
+
+      select.parentNode.insertBefore(wrapper, select);
+      wrapper.appendChild(select);
+      wrapper.appendChild(trigger);
+      wrapper.appendChild(dropdown);
+
+      select.addEventListener("change", () => {
+        const currentOpt = select.options[select.selectedIndex];
+        if (currentOpt) labelSpan.textContent = currentOpt.text;
+        updateDropdownOptions();
+      });
+    });
+  }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  UI.initCustomSelects();
+  document.addEventListener("click", () => {
+    document.querySelectorAll(".custom-select-wrapper.open").forEach(w => w.classList.remove("open"));
+  });
+});
 
 window.UI = UI;

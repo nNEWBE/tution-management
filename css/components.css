@@ -457,6 +457,116 @@
   padding: 0.5rem;
 }
 
+/* Custom Floating Select UI Component */
+.custom-select-wrapper {
+  position: relative;
+  width: 100%;
+  user-select: none;
+}
+
+.custom-select-trigger {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  font-size: var(--fs-sm);
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  line-height: 1.5;
+}
+
+.custom-select-trigger:hover {
+  border-color: #2563eb;
+}
+
+.custom-select-wrapper.open .custom-select-trigger {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3.5px rgba(37, 99, 235, 0.15);
+  background: var(--color-surface);
+}
+
+.custom-select-trigger .arrow-icon {
+  width: 16px;
+  height: 16px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.custom-select-wrapper.open .custom-select-trigger .arrow-icon {
+  transform: rotate(180deg);
+  color: #2563eb;
+}
+
+.custom-select-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
+  z-index: 1050;
+  max-height: 240px;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px) scale(0.98);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  padding: 6px;
+}
+
+.custom-select-wrapper.open .custom-select-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.custom-select-option {
+  padding: 0.65rem 0.85rem;
+  font-size: var(--fs-sm);
+  color: var(--color-text);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.15s ease, color 0.15s ease;
+  font-weight: 500;
+}
+
+.custom-select-option:hover {
+  background: #f0f7ff;
+  color: #1d4ed8;
+}
+
+.custom-select-option.selected {
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-weight: 700;
+}
+
+.custom-select-option .check-icon {
+  width: 14px;
+  height: 14px;
+  color: #2563eb;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.custom-select-option.selected .check-icon {
+  opacity: 1;
+}
+
 /* Custom Checkbox Component */
 .custom-checkbox {
   display: inline-flex;
