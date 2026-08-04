@@ -9,6 +9,7 @@
 ## 🌟 Key System Features
 
 ### 🏢 1. Center Admin Control Panel (`admin-dashboard.html`)
+
 - **Real-Time Financial & Administrative Metrics**: Instant tracking of Total Active Students, Assigned Teachers, Pending/Overdue Tuition Fees, and Total Collected Revenue in BDT (`৳`).
 - **Student CRUD Management**: Filter students by class stream or fee status, add new students, edit roll numbers, and view guardian contacts.
 - **Teacher & Tutor Directory**: Manage subject tutors, assigned classes, weekly class hours, and contact details.
@@ -20,6 +21,7 @@
 ---
 
 ### 🎓 2. Teacher & Tutor Portal (`teacher-dashboard.html`)
+
 - **Interactive Daily Attendance Logger**: One-click attendance marking (`Present`, `Absent`, `Late`) with live percentage metrics.
 - **Model Test Marks & Evaluation**: Record exam scores, marks percentages, letter grades (`A+`, `A`, `B`), and custom tutor remarks for each student.
 - **Homework Assignment Publisher**: Create homework tasks with submission deadlines and detailed resource instructions.
@@ -27,6 +29,7 @@
 ---
 
 ### 👨‍👩‍👧 3. Parent & Student Hub (`parent-dashboard.html`)
+
 - **4-Point Executive Overview**:
   1. **Next Scheduled Class**: Live countdown to upcoming subject routine slot and classroom location.
   2. **Fee Standing**: Billed monthly tuition amount and status badge (`PENDING` / `PAID`).
@@ -39,6 +42,7 @@
 ---
 
 ### 🌐 4. Public Website & Routine Simulator (`index.html`)
+
 - **Interactive Dark Glass Routine Simulator**: Live timeline feed featuring active class status (`68% Live Session`, `100% Completed`), day selector tabs (Sat to Wed), room occupancy badges, and class routine cards.
 - **Modern CTA Banner**: Dark royal-blue glass gradient container with instant demo role chips.
 - **Course & Batch Catalog**: Detailed breakdown of SSC & HSC Science stream subjects (General Math, Physics, Chemistry, Higher Math).
@@ -124,6 +128,7 @@ Test the multi-role access control gateway using these pre-configured demo crede
 ## 🚀 Installation & Local Running
 
 1. **Clone the Repository**:
+
    ```bash
    git clone https://github.com/nNEWBE/tution-management.git
    cd tution-management
@@ -131,6 +136,7 @@ Test the multi-role access control gateway using these pre-configured demo crede
 
 2. **Run Locally**:
    - Since the application is built with standard Web Technologies, open `index.html` directly in any web browser, or serve using VS Code Live Server:
+
    ```bash
    npx serve ./
    ```
