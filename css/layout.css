@@ -259,18 +259,16 @@
 
 /* ── Footer ───────────────────────────────────────────────── */
 .footer {
-  width: 100vw !important;
-  max-width: 100vw !important;
-  margin-left: calc(-50vw + 50%) !important;
-  margin-right: calc(-50vw + 50%) !important;
-  margin-bottom: 0 !important;
+  width: 100%;
   background: #080c14 !important;
   color: rgba(255,255,255,0.85);
-  padding: 4.5rem 0 2.5rem !important;
+  padding: 4.5rem 0 0 !important;
   position: relative;
   overflow: visible !important;
   border-top: 1px solid rgba(56, 189, 248, 0.25);
   box-shadow: 0 -10px 40px rgba(15, 23, 42, 0.3);
+  margin-top: auto;
+  flex-shrink: 0;
 }
 
 /* Dark extension below footer — eliminates white gap on overscroll */
@@ -287,11 +285,11 @@
 }
 
 .footer .container {
-  max-width: 100% !important;
-  width: 100% !important;
-  padding-left: 5vw !important;
-  padding-right: 5vw !important;
-  margin: 0 auto !important;
+  width: 100%;
+  max-width: 1320px;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  margin: 0 auto;
 }
 
 /* Top glowing border line + decorative glow combined in ::before */
@@ -376,7 +374,7 @@
 }
 
 .footer-bottom {
-  padding-top: var(--space-6);
+  padding: var(--space-6) 0 var(--space-8);
   border-top: 1px solid rgba(255,255,255,0.08);
   display: flex;
   align-items: center;
