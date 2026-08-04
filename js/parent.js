@@ -156,6 +156,34 @@ function setupParentListeners() {
       }, 1000);
     });
   }
+
+  // Dashboard Enrolment Form Listener
+  const enrolmentForm = document.getElementById("dashboard-enrolment-form");
+  if (enrolmentForm) {
+    enrolmentForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const parentName = document.getElementById("dash-reg-parent-name").value;
+      const phone = document.getElementById("dash-reg-parent-phone").value;
+      const studentName = document.getElementById("dash-reg-student-name").value;
+      const className = document.getElementById("dash-reg-class").value;
+      const checkedSubjects = Array.from(document.querySelectorAll('input[name="dash-reg-subjects"]:checked')).map(cb => cb.value);
+
+      window.appStore.data.registrationRequests.push({
+        id: "REG-" + Math.floor(100 + Math.random() * 900),
+        parentName,
+        studentName,
+        phone,
+        className,
+        preferredSubjects: checkedSubjects,
+        status: "pending",
+        submittedDate: new Date().toISOString().split('T')[0]
+      });
+      window.appStore.save();
+
+      UI.showToast(`Admission request submitted for ${studentName}! Center Admin will review & approve shortly.`, "success", "Application Received");
+      enrolmentForm.reset();
+    });
+  }
 }
 
 window.openPayModal = function(payId, amount, month) {
