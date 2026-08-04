@@ -136,7 +136,26 @@
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--space-3);
+}
+
+/* Solid Blue Portal Login Button */
+#nav-login-btn,
+.nav-actions .btn-primary,
+.nav-actions .btn-teal {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+  border: 1px solid #2563eb !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4) !important;
+}
+
+#nav-login-btn:hover,
+.nav-actions .btn-primary:hover,
+.nav-actions .btn-teal:hover {
+  background-color: #1d4ed8 !important;
+  border-color: #1d4ed8 !important;
+  transform: translateY(-1px);
 }
 
 /* Hide portal login/enroll buttons on mobile — shown inside mobile drawer instead */

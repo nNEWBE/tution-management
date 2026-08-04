@@ -1636,10 +1636,8 @@
         window.addEventListener('scroll', function () {
           if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
-            if (loginBtn) { loginBtn.classList.remove('btn-outline-white'); loginBtn.classList.add('btn-outline'); }
           } else {
             navbar.classList.remove('scrolled');
-            if (loginBtn) { loginBtn.classList.add('btn-outline-white'); loginBtn.classList.remove('btn-outline'); }
           }
 
           // Show / hide scroll-to-top button
