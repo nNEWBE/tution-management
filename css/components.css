@@ -852,6 +852,11 @@
   color: #ffffff !important;
 }
 
+.sidebar-nav.tab-list {
+  border-bottom: none !important;
+  margin-bottom: 0 !important;
+}
+
 .tab-pane         { display: none; }
 .tab-pane.active  { display: block; }
 
