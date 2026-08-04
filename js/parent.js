@@ -85,24 +85,37 @@ function renderPaymentSection() {
   const container = document.getElementById("parent-payment-list");
   if (!container) return;
 
-  const payments = window.appStore.getPayments().filter(p => p.studentId === "STU-001");
+  const payments = window.appStore.getPayments();
 
-  container.innerHTML = payments.map(p => `
-    <div class="p-3 border rounded-lg mb-3 background-surface d-flex align-items-center justify-content-between">
-      <div>
-        <div class="fw-bold">${p.month} Tuition Fee</div>
-        <div class="fs-xs text-muted">Due Date: ${UI.formatDate(p.dueDate)}</div>
-        <div class="fw-bold text-primary mt-1">${UI.formatBDT(p.amount)}</div>
+  container.innerHTML = payments.map(p => {
+    const isPaid = p.status === 'paid' || p.status === 'approved';
+    const isPending = p.status === 'pending';
+    const isRejected = p.status === 'rejected';
+
+    const statusBadge = isPaid
+      ? `<span class="badge badge-success fs-xs">✓ Verified & Paid</span>`
+      : (isPending
+        ? `<span class="badge badge-pending fs-xs">⏳ Pending Admin Verification</span>`
+        : `<span class="badge badge-danger fs-xs">✗ Rejected</span>`);
+
+    return `
+      <div class="p-3 border rounded-lg mb-3 background-surface d-flex align-items-center justify-content-between flex-wrap gap-2">
+        <div>
+          <div class="fw-bold">${p.month || p.batch || 'Tuition Fee'}</div>
+          <div class="fs-xs text-muted">Sender: <strong>${p.senderPhone || p.phone || '01712345678'}</strong> • TrxID: <code>${p.transactionId || p.trxId || 'N/A'}</code></div>
+          <div class="fw-bold text-primary mt-1">${UI.formatBDT(p.amount)}</div>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          ${statusBadge}
+          ${!isPaid ? `
+            <button class="btn btn-sm btn-primary" onclick="openPayModal('${p.id}', ${p.amount}, '${p.month || 'Fee'}')">Submit Payment</button>
+          ` : `
+            <button class="btn btn-sm btn-outline" onclick="showReceiptModal('${p.id}')">View Receipt</button>
+          `}
+        </div>
       </div>
-      <div>
-        ${p.status !== 'paid' ? `
-          <button class="btn btn-sm btn-primary" onclick="openPayModal('${p.id}', ${p.amount}, '${p.month}')">Pay Now (bKash/Nagad)</button>
-        ` : `
-          <button class="btn btn-sm btn-outline" onclick="showReceiptModal('${p.id}')">View Receipt</button>
-        `}
-      </div>
-    </div>
-  `).join("");
+    `;
+  }).join("");
 }
 
 function renderHomeworkSection() {
@@ -132,28 +145,43 @@ function setupParentListeners() {
     payForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const payId = document.getElementById("pay-modal-id").value;
-      const method = document.querySelector('input[name="pay-method"]:checked').value;
+      const methodRadio = document.querySelector('input[name="pay-method"]:checked');
+      const method = methodRadio ? methodRadio.value : "bKash";
+      const senderPhone = document.getElementById("pay-sender-phone") ? document.getElementById("pay-sender-phone").value.trim() : "01911223344";
+      const transactionId = document.getElementById("pay-trx-id") ? document.getElementById("pay-trx-id").value.trim() : "BK9X72810";
 
       const submitBtn = payForm.querySelector("button[type='submit']");
       submitBtn.disabled = true;
-      submitBtn.textContent = "Processing Payment...";
+      submitBtn.textContent = "Submitting for Verification...";
 
       setTimeout(() => {
-        window.appStore.updatePaymentStatus(payId, "paid", method);
+        const pay = window.appStore.getPayments().find(p => p.id === payId);
+        if (pay) {
+          pay.paymentMethod = method;
+          pay.senderPhone = senderPhone;
+          pay.transactionId = transactionId;
+          pay.status = "pending";
+          window.appStore.save();
+        } else {
+          window.appStore.addPayment({
+            id: payId || ("PAY-2026-" + Math.floor(1000 + Math.random() * 9000)),
+            studentId: "STU-001",
+            studentName: "Nafisa Rahman",
+            amount: 3500,
+            paymentMethod: method,
+            senderPhone: senderPhone,
+            transactionId: transactionId,
+            status: "pending"
+          });
+        }
+
         submitBtn.disabled = false;
         submitBtn.textContent = "Confirm Payment";
 
-        const modalBox = document.querySelector("#modal-pay-fee .modal");
-        if (window.animatePaymentSuccess) {
-          window.animatePaymentSuccess(modalBox, () => {
-            UI.closeModal("modal-pay-fee");
-            UI.showToast(`Tuition payment of ৳3,500 successfully completed via ${method}!`, "success", "Payment Successful");
-          });
-        } else {
-          UI.closeModal("modal-pay-fee");
-          UI.showToast(`Tuition payment of ৳3,500 successfully completed via ${method}!`, "success", "Payment Successful");
-        }
-      }, 1000);
+        UI.closeModal("modal-pay-fee");
+        UI.showToast(`Payment request with TrxID (${transactionId}) submitted! Awaiting Admin approval.`, "info", "Sent for Review");
+        renderPaymentSection();
+      }, 600);
     });
   }
 

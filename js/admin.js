@@ -198,7 +198,7 @@ function renderTeacherTable() {
   `).join("");
 }
 
-/* --- Payment Operations --- */
+/* --- Payment Verification Operations --- */
 function renderPaymentTable(filterStatus = "all") {
   const tbody = document.getElementById("admin-payment-tbody");
   if (!tbody) return;
@@ -209,30 +209,52 @@ function renderPaymentTable(filterStatus = "all") {
     payments = payments.filter(p => p.status === filterStatus);
   }
 
-  tbody.innerHTML = payments.map(p => `
-    <tr>
-      <td><span class="fw-mono text-muted fs-xs">${p.id}</span></td>
-      <td class="fw-bold">${p.studentName}</td>
-      <td>${p.month}</td>
-      <td class="fw-bold">${UI.formatBDT(p.amount)}</td>
-      <td>${UI.formatDate(p.dueDate)}</td>
-      <td>
-        <span class="badge badge-${p.status === 'paid' ? 'success' : (p.status === 'pending' ? 'pending' : 'overdue')}">
-          ${p.status}
-        </span>
-      </td>
-      <td>
-        <div class="d-flex gap-2">
-          ${p.status !== 'paid' ? `
-            <button class="btn btn-sm btn-primary" onclick="markPaymentPaid('${p.id}')">Mark Paid</button>
-            <button class="btn btn-sm btn-secondary" onclick="sendPaymentReminder('${p.studentName}', '${p.amount}')">Send Reminder</button>
-          ` : `
-            <button class="btn btn-sm btn-outline" onclick="showReceiptModal('${p.id}')">Receipt</button>
-          `}
-        </div>
-      </td>
-    </tr>
-  `).join("");
+  tbody.innerHTML = payments.map(p => {
+    const isPaid = p.status === 'paid' || p.status === 'approved';
+    const isPending = p.status === 'pending';
+    const isRejected = p.status === 'rejected';
+
+    const statusBadgeClass = isPaid ? 'success' : (isPending ? 'pending' : 'danger');
+    const statusLabel = isPaid ? 'Verified & Paid' : (isPending ? 'Pending Verification' : 'Rejected');
+
+    return `
+      <tr>
+        <td><span class="fw-mono text-muted fs-xs">${p.id}</span></td>
+        <td class="fw-bold">${p.studentName || 'Student'}</td>
+        <td>
+          <span class="badge badge-teal fs-xs">${p.paymentMethod || 'bKash'}</span>
+        </td>
+        <td>
+          <div class="fs-xs">
+            <div><strong class="text-secondary">Sender:</strong> ${p.senderPhone || p.phone || '01712345678'}</div>
+            <div><strong class="text-primary">TrxID:</strong> <code class="bg-light px-1 rounded">${p.transactionId || p.trxId || 'BK9X72810'}</code></div>
+          </div>
+        </td>
+        <td class="fw-bold text-primary">${UI.formatBDT(p.amount)}</td>
+        <td>
+          <span class="badge badge-${statusBadgeClass}">
+            ${statusLabel}
+          </span>
+        </td>
+        <td>
+          <div class="d-flex gap-2 align-items-center">
+            ${isPending ? `
+              <button class="btn btn-sm btn-teal d-inline-flex align-items-center gap-1" onclick="approvePaymentAction('${p.id}')">
+                <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                <span>Approve</span>
+              </button>
+              <button class="btn btn-sm btn-outline-danger d-inline-flex align-items-center gap-1" onclick="rejectPaymentAction('${p.id}')">
+                <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                <span>Reject</span>
+              </button>
+            ` : `
+              <button class="btn btn-sm btn-outline" onclick="showReceiptModal('${p.id}')">View Receipt</button>
+            `}
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join("");
 }
 
 function setupPaymentListeners() {
@@ -242,9 +264,20 @@ function setupPaymentListeners() {
   }
 }
 
-window.markPaymentPaid = function(payId) {
-  const pay = window.appStore.updatePaymentStatus(payId, "paid", "Cash / Manual");
-  UI.showToast(`Payment ${payId} marked as PAID for ${pay.studentName}!`, "success");
+window.approvePaymentAction = function(payId) {
+  const pay = window.appStore.approvePayment(payId);
+  if (pay) {
+    UI.showToast(`Payment ${pay.id} (${pay.transactionId || ''}) for ${pay.studentName} APPROVED & VERIFIED!`, "success", "Payment Approved");
+    renderPaymentTable();
+  }
+};
+
+window.rejectPaymentAction = function(payId) {
+  const pay = window.appStore.rejectPayment(payId);
+  if (pay) {
+    UI.showToast(`Payment ${pay.id} for ${pay.studentName} has been REJECTED.`, "error", "Payment Rejected");
+    renderPaymentTable();
+  }
 };
 
 window.sendPaymentReminder = function(studentName, amount) {

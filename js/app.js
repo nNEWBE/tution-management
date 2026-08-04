@@ -97,6 +97,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const classStream = document.getElementById("enroll-class-select").value;
       const paymentRadio = document.querySelector('input[name="enroll-payment-method"]:checked');
       const paymentMethod = paymentRadio ? paymentRadio.value : "bKash";
+      const senderPhoneInput = document.getElementById("enroll-sender-phone");
+      const trxIdInput = document.getElementById("enroll-trx-id");
+
+      const senderPhone = senderPhoneInput && senderPhoneInput.value.trim() ? senderPhoneInput.value.trim() : phone;
+      const transactionId = trxIdInput && trxIdInput.value.trim() ? trxIdInput.value.trim() : ("TXN" + Math.floor(100000 + Math.random() * 900000));
 
       const courseTitle = activeCourseData ? activeCourseData.title : "HSC Science Coaching Batch";
       const courseFee = activeCourseData ? Number(activeCourseData.fee) : 3000;
@@ -105,7 +110,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const studentId = "STU-" + Date.now().toString().slice(-4);
 
       // Create & store student record in store
-      if (window.store) {
+      const storeObj = window.appStore || window.store;
+      if (storeObj) {
         const newStudent = {
           id: studentId,
           name: studentName,
@@ -118,17 +124,24 @@ document.addEventListener("DOMContentLoaded", () => {
           status: "Active",
           ref: refNo
         };
-        window.store.addStudent(newStudent);
+        if (storeObj.addStudent) storeObj.addStudent(newStudent);
 
-        window.store.addPayment({
-          id: "TRX-" + Date.now().toString().slice(-5),
-          studentName: studentName,
-          batch: courseTitle,
-          amount: courseFee,
-          method: paymentMethod,
-          date: new Date().toISOString().split("T")[0],
-          status: paymentMethod === "Cash" ? "Verified" : "Pending"
-        });
+        if (storeObj.addPayment) {
+          storeObj.addPayment({
+            id: "PAY-2026-" + Math.floor(1000 + Math.random() * 9000),
+            studentId: studentId,
+            studentName: studentName,
+            className: classStream,
+            month: "Enrolment Fee",
+            batch: courseTitle,
+            amount: courseFee,
+            paymentMethod: paymentMethod,
+            senderPhone: senderPhone,
+            transactionId: transactionId,
+            date: new Date().toISOString().split("T")[0],
+            status: paymentMethod === "Cash" ? "paid" : "pending"
+          });
+        }
       }
 
       UI.closeModal("modal-course-enrollment");

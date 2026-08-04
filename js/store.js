@@ -65,6 +65,48 @@ class Store {
     return newStudent;
   }
 
+  addPayment(payObj) {
+    const newPay = {
+      id: "PAY-2026-" + Math.floor(1000 + Math.random() * 9000),
+      date: new Date().toISOString().split('T')[0],
+      dueDate: new Date().toISOString().split('T')[0],
+      status: "pending",
+      ...payObj
+    };
+    if (!this.data.payments) this.data.payments = [];
+    this.data.payments.unshift(newPay);
+    this.save();
+    return newPay;
+  }
+
+  approvePayment(paymentId) {
+    const pay = (this.data.payments || []).find(p => p.id === paymentId);
+    if (pay) {
+      pay.status = "paid";
+      pay.paidDate = new Date().toISOString().split('T')[0];
+
+      const student = (this.data.students || []).find(s => s.id === pay.studentId || s.name === pay.studentName);
+      if (student) {
+        student.paymentStatus = "paid";
+        student.paidFees = (student.paidFees || 0) + Number(pay.amount || 0);
+        if (student.dueFees) {
+          student.dueFees = Math.max(0, student.dueFees - Number(pay.amount || 0));
+        }
+      }
+      this.save();
+    }
+    return pay;
+  }
+
+  rejectPayment(paymentId) {
+    const pay = (this.data.payments || []).find(p => p.id === paymentId);
+    if (pay) {
+      pay.status = "rejected";
+      this.save();
+    }
+    return pay;
+  }
+
   updatePaymentStatus(paymentId, newStatus, paymentMethod = "bKash") {
     const pay = this.data.payments.find(p => p.id === paymentId);
     if (pay) {
@@ -72,7 +114,9 @@ class Store {
       if (newStatus === "paid") {
         pay.paidDate = new Date().toISOString().split('T')[0];
         pay.paymentMethod = paymentMethod;
-        pay.transactionId = "TXN" + Math.floor(10000000 + Math.random() * 90000000);
+        if (!pay.transactionId) {
+          pay.transactionId = "TXN" + Math.floor(10000000 + Math.random() * 90000000);
+        }
       }
       
       // Update student summary payment status if applicable
