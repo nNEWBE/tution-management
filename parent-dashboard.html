@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parent & Student Hub | IJTutors System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body id="parent-app-root">
+
+  <div class="app-shell">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="sidebar-brand">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/></svg>
+          <span>Parent & Student</span>
+        </a>
+        <button class="sidebar-toggle-btn" aria-label="Toggle Sidebar">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/></svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav tab-list">
+        <div class="sidebar-link tab-item active" data-tab="tab-parent-overview">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+          <span>Immediate Summary</span>
+        </div>
+
+        <div class="sidebar-link tab-item" data-tab="tab-parent-performance">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          <span>Performance & Grades</span>
+        </div>
+
+        <div class="sidebar-link tab-item" data-tab="tab-parent-payments">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Tuition Fee Portal</span>
+        </div>
+
+        <div class="sidebar-link tab-item" data-tab="tab-parent-homework">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          <span>Homework Checklist</span>
+        </div>
+      </nav>
+
+      <div class="sidebar-user">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Parent" class="avatar">
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name" id="parent-display-name">Md. Farhan Chowdhury</div>
+          <div class="sidebar-user-role">Linked: Nafisa Rahman (Class 9)</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      
+      <header class="top-header">
+        <div class="d-flex align-items-center gap-3">
+          <button class="mobile-nav-toggle d-block d-lg-none" aria-label="Open Menu">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+          <div class="page-title">Parent & Student Portal</div>
+        </div>
+
+        <div class="header-actions">
+          <button class="btn btn-outline btn-sm action-logout">Logout</button>
+        </div>
+      </header>
+
+      <main class="content-body tabs-wrapper">
+        
+        <!-- Tab 1: Four Key Questions Immediate Overview -->
+        <div class="tab-pane active" id="tab-parent-overview">
+          
+          <div class="card p-4 mb-4" style="background: linear-gradient(135deg, var(--color-primary-subtle) 0%, #ffffff 100%);">
+            <div class="d-flex align-items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" alt="Student" class="avatar avatar-lg">
+              <div>
+                <h2 class="fs-xl mb-1">Nafisa Rahman (Roll 901)</h2>
+                <div class="fs-xs text-muted">Class 9 Science • Banani Campus • Term 2026</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Immediate 4 Answers Cards -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon-wrap primary"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+              <div class="stat-info">
+                <span class="stat-label">1. Next Upcoming Class</span>
+                <span class="fw-bold fs-sm text-primary">Physics (Class 9)</span>
+                <span class="fs-xs text-muted">Sunday @ 04:00 PM</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon-wrap warning"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+              <div class="stat-info">
+                <span class="stat-label">2. Fee Payment Status</span>
+                <span class="badge" id="parent-stat-payment">PENDING</span>
+                <span class="fs-xs text-muted mt-1">August Fee: ৳3,500</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon-wrap secondary"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 01-2-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+              <div class="stat-info">
+                <span class="stat-label">3. Pending Homework</span>
+                <span class="stat-value" id="parent-stat-homework">3</span>
+                <span class="fs-xs text-muted">Due this week</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon-wrap success"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+              <div class="stat-info">
+                <span class="stat-label">4. Overall Attendance</span>
+                <span class="stat-value text-success" id="parent-stat-attendance">94%</span>
+                <span class="fs-xs text-muted">Excellent Standing</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+            <div class="card p-4">
+              <h3 class="card-title mb-3">Tuition Fee Pay Button</h3>
+              <p class="fs-sm text-muted">Pay monthly tuition fees instantly via bKash, Nagad, or Bank card and generate a printable money receipt.</p>
+              <button class="btn btn-teal mt-2 d-inline-flex align-items-center gap-2" onclick="openPayModal('PAY-2026-0801', 3500, 'August 2026')">
+                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                <span>Pay August Fee (৳3,500)</span>
+              </button>
+            </div>
+
+            <div class="card p-4">
+              <h3 class="card-title mb-3">Academic Badge</h3>
+              <div class="d-flex align-items-center gap-3">
+                <div class="stat-icon-wrap accent" style="width: 48px; height: 48px;">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+                </div>
+                <div>
+                  <div class="fw-bold fs-sm text-primary">Star Scholar Award</div>
+                  <div class="fs-xs text-muted">Recognized for top marks in Physics Kinematics model test!</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Tab 2: Performance Reports -->
+        <div class="tab-pane" id="tab-parent-performance">
+          <div class="card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h3 class="card-title">Subject Performance Sheet & Teacher Remarks</h3>
+              <button class="btn btn-outline btn-sm d-inline-flex align-items-center gap-2" onclick="window.print()">
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                <span>Print Academic Report</span>
+              </button>
+            </div>
+            <div class="performance-list" id="parent-performance-list"></div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Tuition Fee Portal -->
+        <div class="tab-pane" id="tab-parent-payments">
+          <div class="card p-4">
+            <h3 class="card-title mb-4">Monthly Fee History & Digital Receipts</h3>
+            <div id="parent-payment-list"></div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Homework Checklist -->
+        <div class="tab-pane" id="tab-parent-homework">
+          <div class="card p-4">
+            <h3 class="card-title mb-4">Assigned Homework & Deadlines</h3>
+            <div class="homework-grid" id="parent-homework-grid"></div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- MODALS -->
+
+  <!-- Pay Fee Modal -->
+  <div class="modal-backdrop" id="modal-pay-fee">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="fw-bold">Pay Tuition Fee Online</span>
+        <button class="btn-icon" onclick="UI.closeModal('modal-pay-fee')">&times;</button>
+      </div>
+      <form id="checkout-payment-form">
+        <input type="hidden" id="pay-modal-id">
+        <div class="modal-body">
+          <div class="p-3 bg-light rounded-md mb-3">
+            <div class="fs-xs text-muted">Billed Month: <strong id="pay-modal-month">August 2026</strong></div>
+            <div class="fs-xl fw-bold text-primary mt-1" id="pay-modal-amount">৳ 3,500</div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label">Select Payment Gateway</label>
+            <div class="d-flex flex-column gap-2" style="display: flex; flex-direction: column; gap: 8px;">
+              <label class="p-3 border rounded-md d-flex align-items-center gap-3 cursor-pointer">
+                <input type="radio" name="pay-method" value="bKash" checked>
+                <div class="fw-bold fs-sm">bKash Payment Gateway</div>
+              </label>
+
+              <label class="p-3 border rounded-md d-flex align-items-center gap-3 cursor-pointer">
+                <input type="radio" name="pay-method" value="Nagad">
+                <div class="fw-bold fs-sm">Nagad Payment Gateway</div>
+              </label>
+
+              <label class="p-3 border rounded-md d-flex align-items-center gap-3 cursor-pointer">
+                <input type="radio" name="pay-method" value="Card">
+                <div class="fw-bold fs-sm">Debit / Credit Card</div>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="UI.closeModal('modal-pay-fee')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Confirm Payment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- View Money Receipt Modal -->
+  <div class="modal-backdrop" id="modal-view-receipt">
+    <div class="modal">
+      <div class="modal-header no-print">
+        <span class="fw-bold">Payment Money Receipt</span>
+        <button class="btn-icon" onclick="UI.closeModal('modal-view-receipt')">&times;</button>
+      </div>
+      <div class="modal-body" id="receipt-modal-content"></div>
+      <div class="modal-footer no-print">
+        <button class="btn btn-outline d-inline-flex align-items-center gap-2" onclick="window.print()">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          <span>Print Receipt</span>
+        </button>
+        <button class="btn btn-primary" onclick="UI.closeModal('modal-view-receipt')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="js/mock-data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/parent.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

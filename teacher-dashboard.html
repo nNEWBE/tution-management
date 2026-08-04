@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Portal | IJTutors System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body id="teacher-app-root">
+
+  <div class="app-shell">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="sidebar-brand">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/></svg>
+          <span>Teacher Portal</span>
+        </a>
+        <button class="sidebar-toggle-btn" aria-label="Toggle Sidebar">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/></svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav tab-list">
+        <div class="sidebar-link tab-item active" data-tab="tab-teacher-overview">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+          <span>Academic Hub</span>
+        </div>
+
+        <div class="sidebar-link tab-item" data-tab="tab-teacher-attendance">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Attendance & Roster</span>
+        </div>
+
+        <div class="sidebar-link tab-item" data-tab="tab-teacher-homework">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          <span>Homework Manager</span>
+        </div>
+
+        <div class="sidebar-link tab-item" data-tab="tab-teacher-schedule">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          <span>My Teaching Schedule</span>
+        </div>
+      </nav>
+
+      <div class="sidebar-user">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Teacher" class="avatar">
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name" id="teacher-display-name">Tanvir Ahmed</div>
+          <div class="sidebar-user-role">Senior Tutor (Math/Physics)</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      
+      <header class="top-header">
+        <div class="d-flex align-items-center gap-3">
+          <button class="mobile-nav-toggle d-block d-lg-none" aria-label="Open Menu">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+          <div class="page-title">Academic & Evaluation Panel</div>
+        </div>
+
+        <div class="header-actions">
+          <button class="btn btn-outline btn-sm action-logout">Logout</button>
+        </div>
+      </header>
+
+      <main class="content-body tabs-wrapper">
+        
+        <!-- Tab 1: Teacher Overview -->
+        <div class="tab-pane active" id="tab-teacher-overview">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon-wrap primary"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg></div>
+              <div class="stat-info">
+                <span class="stat-value" id="teacher-stat-students">4</span>
+                <span class="stat-label">Assigned Students</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon-wrap secondary"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+              <div class="stat-info">
+                <span class="stat-value" id="teacher-stat-homework">3</span>
+                <span class="stat-label">Active Homework Tasks</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon-wrap success"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+              <div class="stat-info">
+                <span class="stat-value">4 Classes</span>
+                <span class="stat-label">Weekly Schedule</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h3 class="card-title">Quick Actions</h3>
+              <div class="d-flex gap-2">
+                <button class="btn btn-primary" onclick="UI.openModal('modal-add-homework')">+ Assign New Homework</button>
+              </div>
+            </div>
+            <p class="fs-sm text-muted">Use the Attendance Roster tab to mark class presence or click "Enter Score" next to any student to record test grades.</p>
+          </div>
+        </div>
+
+        <!-- Tab 2: Attendance & Student Roster -->
+        <div class="tab-pane" id="tab-teacher-attendance">
+          <div class="card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <div>
+                <h3 class="card-title">Class 9 Science - Attendance & Marks Roster</h3>
+                <span class="fs-xs text-muted">Date: August 4, 2026</span>
+              </div>
+              <button class="btn btn-success d-flex align-items-center gap-2" id="save-attendance-btn">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
+                <span>Save Attendance Roster</span>
+              </button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Roll No</th>
+                    <th>Student Name</th>
+                    <th>Attendance Check-in</th>
+                    <th>Academic Evaluation</th>
+                  </tr>
+                </thead>
+                <tbody id="teacher-attendance-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Homework Manager -->
+        <div class="tab-pane" id="tab-teacher-homework">
+          <div class="card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h3 class="card-title">Assigned Homework & Exercises</h3>
+              <button class="btn btn-primary" onclick="UI.openModal('modal-add-homework')">+ Create Homework Assignment</button>
+            </div>
+            <div class="homework-grid" id="teacher-homework-grid"></div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Schedule -->
+        <div class="tab-pane" id="tab-teacher-schedule">
+          <div class="card p-4">
+            <h3 class="card-title mb-3">My Weekly Assigned Schedule</h3>
+            <div id="teacher-schedule-list"></div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- MODALS -->
+
+  <!-- Add Homework Modal -->
+  <div class="modal-backdrop" id="modal-add-homework">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="fw-bold">Create Homework Assignment</span>
+        <button class="btn-icon" onclick="UI.closeModal('modal-add-homework')">&times;</button>
+      </div>
+      <form id="create-homework-form">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Assignment Title <span class="required">*</span></label>
+            <input type="text" id="hw-title" class="form-control" required placeholder="e.g. Factorization Exercise 3.2">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subject</label>
+            <select id="hw-subject" class="form-select">
+              <option>Mathematics</option><option>Physics</option><option>Chemistry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Class Allocation</label>
+            <select id="hw-class" class="form-select">
+              <option>Class 9</option><option>Class 10</option><option>Class 11</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Submission Deadline <span class="required">*</span></label>
+            <input type="date" id="hw-due-date" class="form-control" required value="2026-08-10">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Instructions & Resource Notes <span class="required">*</span></label>
+            <textarea id="hw-instructions" class="form-control" rows="3" required placeholder="Write step-by-step problem instructions..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="UI.closeModal('modal-add-homework')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Publish Homework</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Enter Student Marks Modal -->
+  <div class="modal-backdrop" id="modal-enter-grade">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="fw-bold">Record Evaluation Score</span>
+        <button class="btn-icon" onclick="UI.closeModal('modal-enter-grade')">&times;</button>
+      </div>
+      <form id="student-grade-form">
+        <input type="hidden" id="grade-student-id">
+        <div class="modal-body">
+          <div class="p-3 bg-light rounded-md mb-3 fs-sm">
+            Evaluating Student: <strong id="grade-student-name-display" class="text-primary">Nafisa Rahman</strong>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subject</label>
+            <select id="grade-subject" class="form-select">
+              <option>Mathematics</option><option>Physics</option><option>Chemistry</option>
+            </select>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div class="form-group">
+              <label class="form-label">Obtained Score <span class="required">*</span></label>
+              <input type="number" id="grade-score" class="form-control" required min="0" max="100" value="88">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Total Marks</label>
+              <input type="number" id="grade-total" class="form-control" value="100" readonly>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Key Strengths (comma-separated)</label>
+            <input type="text" id="grade-strengths" class="form-control" placeholder="Algebraic Proofs, Fast Calculation">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Teacher Remarks & Feedback <span class="required">*</span></label>
+            <textarea id="grade-remarks" class="form-control" rows="3" required placeholder="Write constructive feedback for parent view..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="UI.closeModal('modal-enter-grade')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Evaluation Report</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/mock-data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/teacher.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

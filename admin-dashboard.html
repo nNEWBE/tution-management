@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | IJTutors System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body id="admin-app-root">
+
+  <div class="app-shell">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="sidebar-brand">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/></svg>
+          <span>IJTutors Admin</span>
+        </a>
+        <button class="sidebar-toggle-btn" aria-label="Toggle Sidebar">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/></svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav tab-list">
+        <div class="sidebar-link tab-item active" data-tab="tab-admin-overview">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+          <span>Overview</span>
+        </div>
+
+        <div class="sidebar-link tab-item" data-tab="tab-admin-students">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <span>Students Mgmt</span>
+        </div>
+
+        <div class="sidebar-link tab-item" data-tab="tab-admin-teachers">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          <span>Teachers Mgmt</span>
+        </div>
+
+        <div class="sidebar-link tab-item" data-tab="tab-admin-payments">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Payment Ledger</span>
+        </div>
+
+        <div class="sidebar-link tab-item" data-tab="tab-admin-timetable">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          <span>Timetable Builder</span>
+        </div>
+
+        <div class="sidebar-link tab-item" data-tab="tab-admin-announcements">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c.41 0 .748.312.779.72l.556 7.41a.75.75 0 01-.749.806H7a3.99 3.99 0 01-1.564-.323z"/></svg>
+          <span>Announcements</span>
+        </div>
+
+        <div class="sidebar-link tab-item" data-tab="tab-admin-approvals">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Registration Approvals</span>
+        </div>
+      </nav>
+
+      <div class="sidebar-user">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Admin" class="avatar">
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name" id="admin-display-name">Engr. Rokib Hasan</div>
+          <div class="sidebar-user-role">System Administrator</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      
+      <!-- Top Sticky Header -->
+      <header class="top-header">
+        <div class="d-flex align-items-center gap-3">
+          <button class="mobile-nav-toggle d-block d-lg-none" aria-label="Open Menu">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+          <div class="page-title">Admin Control Panel</div>
+        </div>
+
+        <div class="header-actions">
+          <button class="btn btn-outline btn-sm action-logout">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+            <span>Logout</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Content Body -->
+      <main class="content-body tabs-wrapper">
+        
+        <!-- Tab 1: Overview -->
+        <div class="tab-pane active" id="tab-admin-overview">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon-wrap primary"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg></div>
+              <div class="stat-info">
+                <span class="stat-value" id="stat-total-students">4</span>
+                <span class="stat-label">Total Active Students</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon-wrap secondary"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div>
+              <div class="stat-info">
+                <span class="stat-value" id="stat-total-teachers">2</span>
+                <span class="stat-label">Assigned Teachers</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon-wrap warning"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+              <div class="stat-info">
+                <span class="stat-value" id="stat-pending-payments">2</span>
+                <span class="stat-label">Pending / Overdue Fees</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon-wrap success"><svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+              <div class="stat-info">
+                <span class="stat-value" id="stat-total-revenue">৳ 7,500</span>
+                <span class="stat-label">Collected Revenue</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px;">
+            <div class="card p-4">
+              <div class="card-header border-0 px-0 pt-0">
+                <span class="card-title">Recent Fee Status Updates</span>
+              </div>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr><th>Student</th><th>Month</th><th>Amount</th><th>Status</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Nafisa Rahman</td><td>August 2026</td><td>৳3,500</td><td><span class="badge badge-pending">Pending</span></td></tr>
+                    <tr><td>Ayman Shahriar</td><td>August 2026</td><td>৳4,000</td><td><span class="badge badge-success">Paid</span></td></tr>
+                    <tr><td>Tasnia Islam</td><td>August 2026</td><td>৳3,500</td><td><span class="badge badge-overdue">Overdue</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="card p-4">
+              <div class="card-title mb-3">Quick Actions</div>
+              <div class="d-flex flex-direction-column gap-2" style="display: flex; flex-direction: column; gap: 10px;">
+                <button class="btn btn-primary" onclick="UI.openModal('modal-add-student')">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                  <span>Add New Student</span>
+                </button>
+                <button class="btn btn-secondary" onclick="UI.openModal('modal-add-timetable')">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  <span>Schedule Class Slot</span>
+                </button>
+                <button class="btn btn-outline" onclick="UI.openModal('modal-add-announcement')">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.684A1.76 1.76 0 013 12c0-.752.47-1.42 1.176-1.684l8.618-3.232c.57-.214 1.206.208 1.206.816v8.2c0 .608-.636 1.03-1.206.816l-6.358-2.384z"/></svg>
+                  <span>Publish Notice</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Students Management -->
+        <div class="tab-pane" id="tab-admin-students">
+          <div class="card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+              <div class="d-flex gap-3 flex-wrap flex-1">
+                <input type="text" id="student-search-input" class="form-control" placeholder="Search student name, ID..." style="max-width: 280px;">
+                <select id="student-class-filter" class="form-select" style="max-width: 160px;">
+                  <option value="all">All Classes</option>
+                  <option value="Class 9">Class 9</option>
+                  <option value="Class 10">Class 10</option>
+                  <option value="Class 11">Class 11</option>
+                </select>
+                <select id="student-status-filter" class="form-select" style="max-width: 160px;">
+                  <option value="all">All Payment Status</option>
+                  <option value="paid">Paid</option>
+                  <option value="pending">Pending</option>
+                  <option value="overdue">Overdue</option>
+                </select>
+              </div>
+
+              <button class="btn btn-primary" onclick="UI.openModal('modal-add-student')">+ Enroll Student</button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Student Details</th>
+                    <th>Class</th>
+                    <th>Parent Contact</th>
+                    <th>Attendance %</th>
+                    <th>Tuition Fee Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-student-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Teachers Management -->
+        <div class="tab-pane" id="tab-admin-teachers">
+          <div class="card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h3 class="card-title">Assigned Teaching Faculty</h3>
+              <button class="btn btn-primary" onclick="UI.showToast('Teacher enrollment modal opened', 'info')">+ Assign New Tutor</button>
+            </div>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Teacher</th>
+                    <th>Qualification</th>
+                    <th>Subjects Taught</th>
+                    <th>Assigned Classes</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-teacher-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Payment Ledger -->
+        <div class="tab-pane" id="tab-admin-payments">
+          <div class="card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+              <h3 class="card-title">Tuition Fee Ledger & Reminders</h3>
+              <div class="d-flex gap-3">
+                <select id="admin-payment-filter" class="form-select" style="max-width: 180px;">
+                  <option value="all">All Payments</option>
+                  <option value="paid">Paid Only</option>
+                  <option value="pending">Pending Only</option>
+                  <option value="overdue">Overdue Only</option>
+                </select>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Receipt ID</th>
+                    <th>Student</th>
+                    <th>Month</th>
+                    <th>Amount</th>
+                    <th>Due Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-payment-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 5: Timetable Builder -->
+        <div class="tab-pane" id="tab-admin-timetable">
+          <div class="card p-4 mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h3 class="card-title">Weekly Class Schedule & Conflict Detector</h3>
+              <button class="btn btn-primary" onclick="UI.openModal('modal-add-timetable')">+ Add Class Slot</button>
+            </div>
+            <div id="admin-timetable-grid"></div>
+          </div>
+        </div>
+
+        <!-- Tab 6: Announcements -->
+        <div class="tab-pane" id="tab-admin-announcements">
+          <div class="card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h3 class="card-title">Published Notice Board</h3>
+              <button class="btn btn-primary" onclick="UI.openModal('modal-add-announcement')">+ New Announcement</button>
+            </div>
+            <div id="admin-announcements-list"></div>
+          </div>
+        </div>
+
+        <!-- Tab 7: Registration Approvals -->
+        <div class="tab-pane" id="tab-admin-approvals">
+          <div class="card p-4">
+            <h3 class="card-title mb-3">Pending Student Applications</h3>
+            <div id="pending-registrations-list"></div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- MODALS -->
+
+  <!-- Add Student Modal -->
+  <div class="modal-backdrop" id="modal-add-student">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="fw-bold">Enroll New Student</span>
+        <button class="btn-icon" onclick="UI.closeModal('modal-add-student')">&times;</button>
+      </div>
+      <form id="add-student-form">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Student Full Name <span class="required">*</span></label>
+            <input type="text" id="new-student-name" class="form-control" required placeholder="e.g. Mahir Ahmed">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Class Allocation <span class="required">*</span></label>
+            <select id="new-student-class" class="form-select" required>
+              <option value="Class 9">Class 9</option>
+              <option value="Class 10">Class 10</option>
+              <option value="Class 11">Class 11</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Parent / Guardian Name <span class="required">*</span></label>
+            <input type="text" id="new-student-parent" class="form-control" required placeholder="e.g. Tariq Ahmed">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Parent Phone <span class="required">*</span></label>
+            <input type="tel" id="new-student-phone" class="form-control" required placeholder="01700000000">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="UI.closeModal('modal-add-student')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Enroll Student</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Timetable Slot Modal -->
+  <div class="modal-backdrop" id="modal-add-timetable">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="fw-bold">Schedule Class Slot</span>
+        <button class="btn-icon" onclick="UI.closeModal('modal-add-timetable')">&times;</button>
+      </div>
+      <form id="add-timetable-form">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Day of Week</label>
+            <select id="slot-day" class="form-select">
+              <option>Saturday</option><option>Sunday</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Time Slot</label>
+            <select id="slot-time" class="form-select">
+              <option>04:00 PM - 05:15 PM</option>
+              <option>05:30 PM - 06:45 PM</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Class & Stream</label>
+            <select id="slot-class" class="form-select">
+              <option>Class 9</option><option>Class 10</option><option>Class 11</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subject</label>
+            <select id="slot-subject" class="form-select">
+              <option>Mathematics</option><option>Physics</option><option>Chemistry</option><option>Higher Math</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Assigned Tutor</label>
+            <input type="text" id="slot-teacher" class="form-control" value="Tanvir Ahmed" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Classroom</label>
+            <select id="slot-room" class="form-select">
+              <option>Room 101</option><option>Room 102</option><option>Room 201</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="UI.closeModal('modal-add-timetable')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Schedule</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Announcement Modal -->
+  <div class="modal-backdrop" id="modal-add-announcement">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="fw-bold">Publish Announcement</span>
+        <button class="btn-icon" onclick="UI.closeModal('modal-add-announcement')">&times;</button>
+      </div>
+      <form id="add-announcement-form">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Title <span class="required">*</span></label>
+            <input type="text" id="ann-title" class="form-control" required placeholder="e.g. Test Schedule Update">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Target Audience</label>
+            <select id="ann-audience" class="form-select">
+              <option>All Parents & Students</option>
+              <option>Parents Only</option>
+              <option>Teachers Only</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Priority</label>
+            <select id="ann-priority" class="form-select">
+              <option value="high">High Priority</option>
+              <option value="medium">Medium Priority</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Notice Details <span class="required">*</span></label>
+            <textarea id="ann-content" class="form-control" rows="3" required placeholder="Write clear announcement text..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="UI.closeModal('modal-add-announcement')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Publish Notice</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- View Money Receipt Modal -->
+  <div class="modal-backdrop" id="modal-view-receipt">
+    <div class="modal">
+      <div class="modal-header no-print">
+        <span class="fw-bold">Payment Money Receipt</span>
+        <button class="btn-icon" onclick="UI.closeModal('modal-view-receipt')">&times;</button>
+      </div>
+      <div class="modal-body" id="receipt-modal-content"></div>
+      <div class="modal-footer no-print">
+        <button class="btn btn-outline" onclick="window.print()">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          <span>Print Receipt</span>
+        </button>
+        <button class="btn btn-primary" onclick="UI.closeModal('modal-view-receipt')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/mock-data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
