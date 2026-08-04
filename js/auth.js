@@ -24,10 +24,10 @@ class AuthManager {
     // Find matching user
     const found = users.find(u => u.email.toLowerCase() === cleanEmail);
     if (!found) {
-      return { success: false, message: "Invalid email address or demo user not found." };
+      return { success: false, message: "Invalid email address or user account not found." };
     }
 
-    // Demo password checks
+    // Passwords check
     const validPasswords = {
       "admin@ijtutors.demo": "admin123",
       "teacher@ijtutors.demo": "teacher123",
@@ -35,10 +35,15 @@ class AuthManager {
       "student@ijtutors.demo": "student123"
     };
 
-    const expectedPass = validPasswords[found.email.toLowerCase()] || "123456";
+    let expectedPass = validPasswords[found.email.toLowerCase()];
+    if (!expectedPass && found.password) {
+      expectedPass = found.password;
+    } else if (!expectedPass) {
+      expectedPass = "123456";
+    }
 
     if (password !== expectedPass) {
-      return { success: false, message: "Incorrect password. Please check demo credentials." };
+      return { success: false, message: "Incorrect password. Please try again." };
     }
 
     // Save session
@@ -51,6 +56,38 @@ class AuthManager {
 
     this.currentUser = found;
     return { success: true, user: found, redirect: this.getRoleDashboard(found.role) };
+  }
+
+  registerUser(name, email, password, role = "parent") {
+    const users = window.appStore.getUsers();
+    const cleanEmail = email.trim().toLowerCase();
+
+    if (users.find(u => u.email.toLowerCase() === cleanEmail)) {
+      return { success: false, message: "An account with this email address already exists." };
+    }
+
+    const newUser = {
+      id: "usr_" + Math.random().toString(36).substr(2, 9),
+      name: name.trim(),
+      email: cleanEmail,
+      role: role,
+      avatar: `https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80`,
+      password: password
+    };
+
+    window.appStore.data.users.push(newUser);
+    window.appStore.save();
+
+    // Auto login
+    localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(newUser));
+    this.currentUser = newUser;
+
+    return {
+      success: true,
+      user: newUser,
+      redirect: this.getRoleDashboard(role),
+      message: `Account created successfully for ${name}!`
+    };
   }
 
   logout() {
