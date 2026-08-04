@@ -59,6 +59,10 @@ class AuthManager {
   }
 
   registerUser(name, email, password, role = "parent") {
+    if (role === "admin") {
+      return { success: false, message: "Admin accounts cannot be self-registered." };
+    }
+
     const users = window.appStore.getUsers();
     const cleanEmail = email.trim().toLowerCase();
 
