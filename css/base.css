@@ -14,14 +14,14 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  background-color: #080c14;
+  background-color: #080c14 !important;
 }
 
 body {
   font-family: var(--font-body);
   font-size: var(--fs-base);
   color: var(--color-text);
-  background-color: #080c14;
+  background-color: #080c14 !important;
   line-height: 1.65;
   min-height: 100vh;
   overflow-x: hidden;
