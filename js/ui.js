@@ -165,10 +165,29 @@ class UI {
 
       trigger.addEventListener("click", (e) => {
         e.stopPropagation();
+        
+        // Close all other open dropdowns
         document.querySelectorAll(".custom-select-wrapper.open").forEach(w => {
-          if (w !== wrapper) w.classList.remove("open");
+          if (w !== wrapper) w.classList.remove("open", "open-top");
         });
-        wrapper.classList.toggle("open");
+
+        const isOpen = wrapper.classList.contains("open");
+        if (!isOpen) {
+          // Calculate remaining space in viewport
+          const triggerRect = trigger.getBoundingClientRect();
+          const spaceBelow = window.innerHeight - triggerRect.bottom;
+          const dropdownHeight = 220; // Estimated dropdown max height
+
+          // Open upwards if remaining space below is smaller than dropdown height
+          if (spaceBelow < dropdownHeight && triggerRect.top > spaceBelow) {
+            wrapper.classList.add("open-top");
+          } else {
+            wrapper.classList.remove("open-top");
+          }
+          wrapper.classList.add("open");
+        } else {
+          wrapper.classList.remove("open", "open-top");
+        }
       });
 
       select.parentNode.insertBefore(wrapper, select);

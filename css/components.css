@@ -531,6 +531,17 @@
   transform: translateY(0) scale(1);
 }
 
+/* Open Upwards Position when near viewport bottom */
+.custom-select-wrapper.open-top .custom-select-dropdown {
+  top: auto;
+  bottom: calc(100% + 6px);
+  transform: translateY(8px) scale(0.98);
+}
+
+.custom-select-wrapper.open-top.open .custom-select-dropdown {
+  transform: translateY(0) scale(1);
+}
+
 .custom-select-option {
   padding: 0.65rem 0.85rem;
   font-size: var(--fs-sm);
