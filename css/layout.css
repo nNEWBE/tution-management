@@ -273,14 +273,14 @@
   box-shadow: 0 -10px 40px rgba(15, 23, 42, 0.3);
 }
 
-/* Infinite dark extension below footer — eliminates white gap on overscroll */
+/* Dark extension below footer — eliminates white gap on overscroll */
 .footer::after {
   content: '';
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: -100vh;
-  height: 100vh;
+  position: absolute;
+  left: -100vw;
+  right: -100vw;
+  bottom: -500px;
+  height: 500px;
   background: #080c14;
   pointer-events: none;
   z-index: -1;
