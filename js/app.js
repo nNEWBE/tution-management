@@ -61,4 +61,92 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // Wire Course Marketing Card "Enroll Now" Triggers
+  let activeCourseData = null;
+  document.querySelectorAll(".btn-enroll-trigger").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const id = btn.getAttribute("data-course-id");
+      const title = btn.getAttribute("data-course-title");
+      const fee = btn.getAttribute("data-course-fee");
+      const room = btn.getAttribute("data-course-room");
+
+      activeCourseData = { id, title, fee, room };
+
+      const titleEl = document.getElementById("enroll-modal-selected-title");
+      const priceEl = document.getElementById("enroll-modal-selected-price");
+      const courseNameEl = document.getElementById("enroll-modal-course-name");
+
+      if (titleEl) titleEl.textContent = title;
+      if (priceEl) priceEl.textContent = "৳ " + Number(fee).toLocaleString('en-IN');
+      if (courseNameEl) courseNameEl.textContent = `Enrolment: ${title}`;
+
+      UI.openModal("modal-course-enrollment");
+    });
+  });
+
+  // Handle Course Enrollment Form Submission
+  const courseEnrollForm = document.getElementById("course-enrollment-form");
+  if (courseEnrollForm) {
+    courseEnrollForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const studentName = document.getElementById("enroll-student-name").value.trim();
+      const parentName = document.getElementById("enroll-parent-name").value.trim();
+      const phone = document.getElementById("enroll-phone").value.trim();
+      const classStream = document.getElementById("enroll-class-select").value;
+      const paymentRadio = document.querySelector('input[name="enroll-payment-method"]:checked');
+      const paymentMethod = paymentRadio ? paymentRadio.value : "bKash";
+
+      const courseTitle = activeCourseData ? activeCourseData.title : "HSC Science Coaching Batch";
+      const courseFee = activeCourseData ? Number(activeCourseData.fee) : 3000;
+
+      const refNo = "ENR-2026-" + Math.floor(1000 + Math.random() * 9000);
+      const studentId = "STU-" + Date.now().toString().slice(-4);
+
+      // Create & store student record in store
+      if (window.store) {
+        const newStudent = {
+          id: studentId,
+          name: studentName,
+          parentName: parentName,
+          phone: phone,
+          classStream: classStream,
+          batch: courseTitle,
+          dueFees: courseFee,
+          paidFees: paymentMethod === "Cash" ? courseFee : 0,
+          status: "Active",
+          ref: refNo
+        };
+        window.store.addStudent(newStudent);
+
+        window.store.addPayment({
+          id: "TRX-" + Date.now().toString().slice(-5),
+          studentName: studentName,
+          batch: courseTitle,
+          amount: courseFee,
+          method: paymentMethod,
+          date: new Date().toISOString().split("T")[0],
+          status: paymentMethod === "Cash" ? "Verified" : "Pending"
+        });
+      }
+
+      UI.closeModal("modal-course-enrollment");
+
+      // Update & open success modal
+      const refEl = document.getElementById("success-enroll-ref");
+      const studentEl = document.getElementById("success-enroll-student");
+      const courseEl = document.getElementById("success-enroll-course");
+      const paymentEl = document.getElementById("success-enroll-payment");
+
+      if (refEl) refEl.textContent = refNo;
+      if (studentEl) studentEl.textContent = `${studentName} (${parentName})`;
+      if (courseEl) courseEl.textContent = courseTitle;
+      if (paymentEl) paymentEl.textContent = `${paymentMethod} (${paymentMethod === "Cash" ? "Paid & Verified" : "Pending Manual Verification"})`;
+
+      UI.openModal("modal-enrollment-success");
+      UI.showToast("Student enrolment submitted successfully!", "success", "Enrolment Confirmed");
+      courseEnrollForm.reset();
+    });
+  }
 });

@@ -75,7 +75,7 @@ function renderPerformanceSection() {
       </div>
       <div class="fs-xs text-secondary mt-2"><strong>Teacher Remarks:</strong> ${r.teacherRemarks}</div>
       <div class="strength-pills">
-        ${r.strengths.map(s => `<span class="strength-pill">✓ ${s}</span>`).join("")}
+        ${r.strengths.map(s => `<span class="strength-pill d-inline-flex align-items-center gap-1"><svg width="10" height="10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg> <span>${s}</span></span>`).join("")}
       </div>
     </div>
   `).join("");
