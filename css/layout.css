@@ -362,7 +362,7 @@
 .sidebar-user {
   margin: 0.75rem 0.85rem 0.85rem;
   padding: 0.85rem 1rem;
-  border-radius: 16px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.04);
   border: none !important;
   box-shadow: none !important;
